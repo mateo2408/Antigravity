@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcuStickers Mobile - Pegatinas con Identidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🇪🇨</span>
+                <span class="logo-text">EcuStickers</span>
+            </div>
+            <div class="nav-actions">
+                <button class="lang-toggle" aria-label="Cambiar idioma">ES</button>
+                <button class="icon-btn" aria-label="Carrito">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="badge">0</span>
+                </button>
+                <button class="icon-btn" aria-label="Usuario">
+                    <i data-lucide="user"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Lleva a Ecuador<br><span class="highlight">en cada sticker</span></h1>
+            <p>Descubre nuestra colección inspirada en la fauna, flora y cultura de nuestro país. Personaliza y crea tu
+                propia identidad.</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn btn-primary">Ver Catálogo</a>
+                <a href="#creator" class="btn btn-secondary">Crear Sticker</a>
+            </div>
+        </div>
+        <div class="hero-background"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Catalog Section -->
+        <section id="catalog" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Explora la Colección</h2>
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar stickers (ej. Tortuga, Volcán)...">
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="region">Regiones</button>
+                    <button class="filter-btn" data-filter="animal">Animales</button>
+                    <button class="filter-btn" data-filter="flora">Flora</button>
+                    <button class="filter-btn" data-filter="culture">Cultura</button>
+                </div>
+
+                <!-- Grid -->
+                <div class="sticker-grid" id="stickerGrid">
+                    <!-- Stickers will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Creator Section -->
+        <section id="creator" class="section creator-section">
+            <div class="container">
+                <div class="creator-layout">
+                    <div class="creator-info">
+                        <h2>Creador de Stickers</h2>
+                        <p>Fusiona elementos, añade texto y crea algo único.</p>
+                        <div class="creator-tools">
+                            <div class="tool-group">
+                                <label>Base</label>
+                                <div class="tool-options">
+                                    <button class="tool-btn active">Llama</button>
+                                    <button class="tool-btn">Cóndor</button>
+                                    <button class="tool-btn">Cuy</button>
+                                </div>
+                            </div>
+                            <div class="tool-group">
+                                <label>Accesorio</label>
+                                <div class="tool-options">
+                                    <button class="tool-btn">Sombrero</button>
+                                    <button class="tool-btn">Poncho</button>
+                                    <button class="tool-btn">Gafas</button>
+                                </div>
+                            </div>
+                            <div class="tool-group">
+                                <label>Personalizar</label>
+                                <div class="tool-options vertical">
+                                    <input type="text" id="creatorText" class="creator-input" placeholder="Tu nombre..."
+                                        maxlength="12">
+                                    <div class="color-picker">
+                                        <button class="color-btn active" data-color="#1A1A1A"
+                                            style="background: #1A1A1A"></button>
+                                        <button class="color-btn" data-color="#FFD100"
+                                            style="background: #FFD100"></button>
+                                        <button class="color-btn" data-color="#0033A0"
+                                            style="background: #0033A0"></button>
+                                        <button class="color-btn" data-color="#EF3340"
+                                            style="background: #EF3340"></button>
+                                        <button class="color-btn" data-color="#FFFFFF"
+                                            style="background: #FFFFFF; border: 1px solid #ddd;"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary full-width" id="addToCartCreator">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    <div class="creator-preview">
+                        <div class="preview-canvas">
+                            <div class="placeholder-sticker">
+                                <span>Tu Diseño Aquí</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EcuStickers</h3>
+                    <p>Sostenibilidad y cultura en cada impresión.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="payment-methods">
+                        <span>Pagos seguros con:</span>
+                        <div class="payment-icons">
+                            <span class="pay-icon">Visa</span>
+                            <span class="pay-icon">Mastercard</span>
+                        </div>
+                    </div>
+                    <div class="shipping">
+                        <span>Envíos por:</span>
+                        <span class="ship-icon">Servientrega</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcuStickers Mobile. Hecho en Ecuador 🇪🇨</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
