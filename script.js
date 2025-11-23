@@ -123,24 +123,101 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePreview();
 
     // Cart Logic
-    let cartCount = 0;
+    let cartItems = [];
     const badge = document.querySelector('.badge');
     const addToCartCreatorBtn = document.getElementById('addToCartCreator');
+    const cartBtn = document.getElementById('cartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartTotalElement = document.getElementById('cartTotal');
+    const cartCloseBtn = document.querySelector('.cart-close');
 
-    function addToCart() {
-        cartCount++;
-        badge.textContent = cartCount;
+    function updateCartUI() {
+        badge.textContent = cartItems.length;
 
-        // Simple visual feedback
+        // Badge animation
         badge.style.transform = 'scale(1.5)';
         setTimeout(() => badge.style.transform = 'scale(1)', 200);
+    }
 
+    function addToCart(item) {
+        cartItems.push(item);
+        updateCartUI();
+        // Optional: Open cart automatically or show toast
+        // openCart(); 
         alert('¡Producto añadido al carrito!');
     }
 
-    addToCartCreatorBtn.addEventListener('click', addToCart);
+    function renderCartItems() {
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
 
-    // Modal Logic
+        if (cartItems.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="empty-cart-msg">Tu carrito está vacío</div>';
+        } else {
+            cartItems.forEach((item, index) => {
+                total += item.price;
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <button class="cart-item-remove" data-index="${index}">Eliminar</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemEl);
+            });
+        }
+
+        cartTotalElement.textContent = `$${total.toFixed(2)}`;
+
+        // Attach remove listeners
+        document.querySelectorAll('.cart-item-remove').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                cartItems.splice(index, 1);
+                updateCartUI();
+                renderCartItems();
+            });
+        });
+    }
+
+    function openCart() {
+        renderCartItems();
+        cartModal.classList.add('active');
+    }
+
+    if (cartBtn) {
+        cartBtn.addEventListener('click', openCart);
+    }
+
+    if (cartCloseBtn) {
+        cartCloseBtn.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+        });
+    }
+
+    if (cartModal) {
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) cartModal.classList.remove('active');
+        });
+    }
+
+    // Creator Add to Cart
+    addToCartCreatorBtn.addEventListener('click', () => {
+        // Create canvas image (mock)
+        const customItem = {
+            name: `Sticker Personalizado (${currentBase})`,
+            price: 4.00,
+            image: 'images/tortuga.png', // Fallback/Mock for now
+            category: 'custom'
+        };
+        addToCart(customItem);
+    });
+
+    // Product Modal Logic
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
@@ -164,12 +241,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = modal.querySelector('.modal-close');
     const modalAddToCartBtn = modal.querySelector('#modalAddToCart');
 
+    let currentSelectedSticker = null;
+
     modalAddToCartBtn.addEventListener('click', () => {
-        addToCart();
-        modal.classList.remove('active');
+        if (currentSelectedSticker) {
+            addToCart(currentSelectedSticker);
+            modal.classList.remove('active');
+        }
     });
 
     function openModal(sticker) {
+        currentSelectedSticker = sticker;
         modalImg.src = sticker.image;
         modalTitle.textContent = sticker.name;
         modalRegion.textContent = `Región: ${sticker.region.charAt(0).toUpperCase() + sticker.region.slice(1)}`;

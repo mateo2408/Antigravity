@@ -22,7 +22,7 @@
             </div>
             <div class="nav-actions">
                 <button class="lang-toggle" aria-label="Cambiar idioma">ES</button>
-                <button class="icon-btn" aria-label="Carrito">
+                <button class="icon-btn" aria-label="Carrito" id="cartBtn">
                     <i data-lucide="shopping-bag"></i>
                     <span class="badge">0</span>
                 </button>
@@ -161,6 +161,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Tu Carrito</h2>
+                <button class="cart-close">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItemsContainer">
+                <!-- Items will be injected here -->
+                <div class="empty-cart-msg">Tu carrito está vacío</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="btn btn-primary full-width">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>
