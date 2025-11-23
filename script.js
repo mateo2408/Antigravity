@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mock Data
     const stickers = [
-        { id: 1, name: 'Tortuga Galápagos', category: 'animal', price: 2.50, region: 'galapagos', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Galapagos_giant_tortoise_Geochelone_elephantopus.jpg/640px-Galapagos_giant_tortoise_Geochelone_elephantopus.jpg' },
-        { id: 2, name: 'Volcán Cotopaxi', category: 'paisaje', price: 3.00, region: 'sierra', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Volc%C3%A1n_Cotopaxi_%282015%29.jpg/640px-Volc%C3%A1n_Cotopaxi_%282015%29.jpg' },
-        { id: 3, name: 'Máscara Diablo Huma', category: 'cultura', price: 3.50, region: 'sierra', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/El_Diablo_Huma.jpg/480px-El_Diablo_Huma.jpg' },
-        { id: 4, name: 'Iguana Marina', category: 'animal', price: 2.50, region: 'galapagos', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Marine_Iguana_-_Galapagos_%2832940568808%29.jpg/640px-Marine_Iguana_-_Galapagos_%2832940568808%29.jpg' },
-        { id: 5, name: 'Sombrero de Paja Toquilla', category: 'cultura', price: 2.00, region: 'costa', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/SombrerosCuenca.jpg/640px-SombrerosCuenca.jpg' },
-        { id: 6, name: 'Orquídea Amazónica', category: 'flora', price: 2.75, region: 'amazonia', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Orqu%C3%ADdea_Amaz%C3%B3nica.jpg/480px-Orqu%C3%ADdea_Amaz%C3%B3nica.jpg' },
+        { id: 1, name: 'Tortuga Galápagos', category: 'animal', price: 2.50, region: 'galapagos', image: 'images/tortuga.png' },
+        { id: 2, name: 'Volcán Cotopaxi', category: 'paisaje', price: 3.00, region: 'sierra', image: 'images/cotopaxi.png' },
+        { id: 3, name: 'Máscara Diablo Huma', category: 'cultura', price: 3.50, region: 'sierra', image: 'images/diablo_huma.png' },
+        { id: 4, name: 'Iguana Marina', category: 'animal', price: 2.50, region: 'galapagos', image: 'images/iguana.png' },
+        { id: 5, name: 'Sombrero de Paja Toquilla', category: 'cultura', price: 2.00, region: 'costa', image: 'images/sombrero.png' },
+        { id: 6, name: 'Orquídea Amazónica', category: 'flora', price: 2.75, region: 'amazonia', image: 'images/orquidea.png' },
     ];
 
     const stickerGrid = document.getElementById('stickerGrid');
