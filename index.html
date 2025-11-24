@@ -29,7 +29,7 @@
                     <i data-lucide="shopping-bag"></i>
                     <span class="badge">0</span>
                 </button>
-                <button class="icon-btn" aria-label="Usuario">
+                <button class="icon-btn" aria-label="Usuario" id="userBtn">
                     <i data-lucide="user"></i>
                 </button>
             </div>
@@ -181,7 +181,17 @@
                     <span>Total:</span>
                     <span id="cartTotal">$0.00</span>
                 </div>
-                <button class="btn btn-primary full-width">Proceder al Pago</button>
+                <button class="btn btn-primary full-width" id="checkoutBtn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Modal -->
+    <div class="modal-overlay" id="userModal">
+        <div class="modal-content user-modal-content">
+            <button class="modal-close" id="userModalClose">&times;</button>
+            <div id="userModalBody">
+                <!-- Content injected by JS -->
             </div>
         </div>
     </div>

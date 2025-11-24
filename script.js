@@ -320,4 +320,106 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.creator-info h2').textContent = t.creatorTitle;
         document.querySelector('.creator-info p').textContent = t.creatorDesc;
     });
+
+    // --- User Logic ---
+    const userBtn = document.getElementById('userBtn');
+    const userModal = document.getElementById('userModal');
+    const userModalClose = document.getElementById('userModalClose');
+    const userModalBody = document.getElementById('userModalBody');
+    let isLoggedIn = false;
+
+    function renderUserModal() {
+        if (!isLoggedIn) {
+            userModalBody.innerHTML = `
+                <div class="user-profile-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Accede a tu cuenta para ver tus pedidos.</p>
+                </div>
+                <div class="login-form">
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" class="form-input" placeholder="ejemplo@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-input" placeholder="********">
+                    </div>
+                    <button class="btn btn-primary full-width" id="loginSubmitBtn">Ingresar</button>
+                    <button class="btn btn-secondary full-width" style="margin-top: 10px;">Registrarse</button>
+                </div>
+            `;
+            document.getElementById('loginSubmitBtn').addEventListener('click', () => {
+                isLoggedIn = true;
+                renderUserModal();
+            });
+        } else {
+            userModalBody.innerHTML = `
+                <div class="user-profile-header">
+                    <div class="user-avatar">
+                        <i data-lucide="user" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h2>Mateo Cisneros</h2>
+                    <p>Miembro desde Nov 2024</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Pedidos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Deseos</span>
+                    </div>
+                </div>
+                <button class="btn btn-secondary full-width" id="logoutBtn">Cerrar Sesión</button>
+            `;
+            lucide.createIcons();
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                isLoggedIn = false;
+                renderUserModal();
+            });
+        }
+    }
+
+    if (userBtn) {
+        userBtn.addEventListener('click', () => {
+            renderUserModal();
+            userModal.classList.add('active');
+        });
+    }
+
+    if (userModalClose) {
+        userModalClose.addEventListener('click', () => {
+            userModal.classList.remove('active');
+        });
+    }
+
+    if (userModal) {
+        userModal.addEventListener('click', (e) => {
+            if (e.target === userModal) userModal.classList.remove('active');
+        });
+    }
+
+    // --- Checkout Logic ---
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cartItems.length === 0) {
+                alert('Tu carrito está vacío. ¡Agrega algunos stickers primero!');
+                return;
+            }
+
+            const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+            const confirmPayment = confirm(`¿Deseas proceder al pago de $${total.toFixed(2)}?`);
+
+            if (confirmPayment) {
+                alert('¡Pago realizado con éxito! Gracias por tu compra en EcuStickers.');
+                cartItems = [];
+                updateCartUI();
+                renderCartItems();
+                cartModal.classList.remove('active');
+            }
+        });
+    }
 });

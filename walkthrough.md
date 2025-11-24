@@ -1,25 +1,38 @@
-# Walkthrough - Mission and Vision Page
+# Walkthrough - User and Checkout Logic
 
-I have added a new "Mission and Vision" page to the EcuStickers project and linked it from the main navigation.
+I have implemented the logic for the User Profile and the Checkout process.
 
 ## Changes
 
-### 1. Created `mision-vision.html`
-A new page that contains:
-- **Header**: Consistent with the main site, including the logo and a "Home" button.
-- **Hero Section**: A brief introduction "Nuestra Esencia".
-- **Mission & Vision Cards**: Two styled cards presenting the Mission and Vision of EcuStickers.
-- **Footer**: Identical to the main site for consistency.
+### 1. User Profile Logic
+- **User Button**: Now opens a modal when clicked.
+- **Login State**: Initially shows a login form.
+- **Profile State**: After clicking "Ingresar", shows a mock user profile with avatar, name, and stats.
+- **Logout**: Allows switching back to the login state.
+- **Files Modified**:
+    - `index.html`: Added `id="userBtn"` and the User Modal structure.
+    - `styles.css`: Added styles for the user modal (avatar, form, stats).
+    - `script.js`: Added logic to handle modal opening, state toggling, and rendering.
 
-### 2. Updated `index.html`
-- Added a "Misión y Visión" button in the navigation bar to allow users to access the new page.
+### 2. Checkout Logic
+- **Proceed to Pay Button**: Now functional.
+- **Validation**: Checks if the cart is empty before proceeding.
+- **Confirmation**: Asks the user to confirm the total amount.
+- **Success**: Simulates a successful payment, clears the cart, and updates the UI.
+- **Files Modified**:
+    - `index.html`: Added `id="checkoutBtn"`.
+    - `script.js`: Added event listener for the checkout button.
 
 ## Verification Results
 
-### Automated Tests
-- N/A (Visual changes only)
-
 ### Manual Verification
-- Verified that the new page uses the existing `styles.css` for a consistent look and feel.
-- Verified that the navigation links work (Home -> Mission/Vision and Mission/Vision -> Home).
-- Checked that the new page does not rely on `script.js` to avoid errors with missing elements.
+- **User Flow**:
+    1. Click User Icon -> Modal opens with Login Form.
+    2. Click "Ingresar" -> Modal updates to show Profile (Mateo Cisneros).
+    3. Click "Cerrar Sesión" -> Modal returns to Login Form.
+    4. Click outside modal -> Modal closes.
+- **Checkout Flow**:
+    1. Click "Proceder al Pago" with empty cart -> Alert "Tu carrito está vacío".
+    2. Add items to cart.
+    3. Click "Proceder al Pago" -> Confirm dialog shows correct total.
+    4. Click "OK" -> Success alert, cart clears, modal closes.
