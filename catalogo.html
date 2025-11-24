@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Completo - EcuStickers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="logo">
+                    <span class="logo-icon">🇪🇨</span>
+                    <span class="logo-text">EcuStickers</span>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-secondary" style="margin-right: 10px;">Inicio</a>
+                <button class="icon-btn" aria-label="Carrito" id="cartBtn">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="badge">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Catálogo Completo</h2>
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Buscar stickers...">
+                    </div>
+                </div>
+
+                <!-- Expanded Filters -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="paisaje">Paisajes</button>
+                    <button class="filter-btn" data-filter="animal">Animales</button>
+                    <button class="filter-btn" data-filter="flora">Flora</button>
+                    <button class="filter-btn" data-filter="cultura">Cultura</button>
+                    <button class="filter-btn" data-filter="digital">Digitales</button>
+                    <button class="filter-btn" data-filter="pack">Packs</button>
+                </div>
+
+                <!-- Grid -->
+                <div class="sticker-grid" id="stickerGrid">
+                    <!-- Stickers will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EcuStickers</h3>
+                    <p>Sostenibilidad y cultura en cada impresión.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcuStickers Mobile. Hecho en Ecuador 🇪🇨</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal (Reused) -->
+    <div class="cart-modal-overlay" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Tu Carrito</h2>
+                <button class="cart-close">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItemsContainer">
+                <div class="empty-cart-msg">Tu carrito está vacío</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+                <button class="btn btn-primary full-width" id="checkoutBtn">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal (Reused) -->
+    <!-- Logic will be handled by script.js -->
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

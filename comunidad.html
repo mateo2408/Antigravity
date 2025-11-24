@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad - EcuStickers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="logo">
+                    <span class="logo-icon">🇪🇨</span>
+                    <span class="logo-text">EcuStickers</span>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-secondary" style="margin-right: 10px;">Inicio</a>
+                <button class="icon-btn" aria-label="Carrito" id="cartBtn">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="badge">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" style="padding: var(--spacing-lg) 0; margin-bottom: 0;">
+        <div class="container hero-content">
+            <h1>Nuestra <span class="highlight">Tribu</span></h1>
+            <p>Únete a miles de artistas, viajeros y amantes de la naturaleza que llevan a Ecuador en su piel (y en sus
+                laptops).</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Target Audience Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>¿Quiénes Somos?</h2>
+                    <p>Somos una comunidad de jóvenes apasionados por el diseño local, la cultura y el medio ambiente.
+                    </p>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <i data-lucide="palette" class="feature-icon"></i>
+                        <h3>Artistas & Creadores</h3>
+                        <p>Ilustradores y diseñadores que buscan inspiración en nuestras raíces.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i data-lucide="compass" class="feature-icon"></i>
+                        <h3>Viajeros</h3>
+                        <p>Turistas nacionales e internacionales que coleccionan recuerdos de sus aventuras.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i data-lucide="leaf" class="feature-icon"></i>
+                        <h3>Eco-Friendly</h3>
+                        <p>Personas conscientes que prefieren productos sostenibles y con propósito.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Gallery -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Galería de la Comunidad</h2>
+                    <p>Así lucen nuestros stickers en el mundo real. ¡Etiquétanos para aparecer aquí!</p>
+                </div>
+                <div class="gallery-grid">
+                    <!-- Placeholders for user generated content -->
+                    <div class="gallery-item"
+                        style="background-color: #eee; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span>Laptop con Sticker Llama</span>
+                    </div>
+                    <div class="gallery-item"
+                        style="background-color: #eee; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span>Termo con Sticker Tortuga</span>
+                    </div>
+                    <div class="gallery-item"
+                        style="background-color: #eee; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+                        <span>Cuaderno con Sticker Volcán</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog / News -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Novedades</h2>
+                </div>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <h3>Campaña "Galápagos en Stickers"</h3>
+                        <p>Descubre nuestra nueva colección dedicada a las islas encantadas. Parte de las ganancias se
+                            donan a la conservación.</p>
+                        <a href="#" class="btn-link">Leer más &rarr;</a>
+                    </article>
+                    <article class="news-card">
+                        <h3>Ecuador Biodiverso</h3>
+                        <p>Celebramos la diversidad de flora y fauna con diseños exclusivos de artistas locales.</p>
+                        <a href="#" class="btn-link">Leer más &rarr;</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EcuStickers</h3>
+                    <p>Sostenibilidad y cultura en cada impresión.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="payment-methods">
+                        <span>Pagos seguros con:</span>
+                        <div class="payment-icons">
+                            <span class="pay-icon">Visa</span>
+                            <span class="pay-icon">Mastercard</span>
+                        </div>
+                    </div>
+                    <div class="shipping">
+                        <span>Envíos por:</span>
+                        <span class="ship-icon">Servientrega</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcuStickers Mobile. Hecho en Ecuador 🇪🇨</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('EcuStickers Mobile Prototype Loaded');
 
     // Mock Data
+    // Mock Data
     const stickers = [
         { id: 1, name: 'Tortuga Galápagos', category: 'animal', price: 2.50, region: 'galapagos', image: 'images/tortuga.png' },
         { id: 2, name: 'Volcán Cotopaxi', category: 'paisaje', price: 3.00, region: 'sierra', image: 'images/cotopaxi.png' },
@@ -9,118 +10,124 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 4, name: 'Iguana Marina', category: 'animal', price: 2.50, region: 'galapagos', image: 'images/iguana.png' },
         { id: 5, name: 'Sombrero de Paja Toquilla', category: 'cultura', price: 2.00, region: 'costa', image: 'images/sombrero.png' },
         { id: 6, name: 'Orquídea Amazónica', category: 'flora', price: 2.75, region: 'amazonia', image: 'images/orquidea.png' },
+        { id: 7, name: 'Pack Galápagos (Digital)', category: 'digital', price: 4.99, region: 'galapagos', image: 'images/tortuga.png' },
+        { id: 8, name: 'Pack Andino', category: 'pack', price: 8.50, region: 'sierra', image: 'images/cotopaxi.png' },
     ];
 
     const stickerGrid = document.getElementById('stickerGrid');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
     // Render Stickers
-    function renderStickers(filter = 'all') {
-        stickerGrid.innerHTML = '';
+    if (stickerGrid) {
+        function renderStickers(filter = 'all') {
+            stickerGrid.innerHTML = '';
 
-        const filteredStickers = filter === 'all'
-            ? stickers
-            : stickers.filter(s => s.category === filter || s.region === filter);
+            const filteredStickers = filter === 'all'
+                ? stickers
+                : stickers.filter(s => s.category === filter || s.region === filter);
 
-        filteredStickers.forEach(sticker => {
-            const card = document.createElement('div');
-            card.className = 'sticker-card';
-            card.innerHTML = `
-                <img src="${sticker.image}" alt="${sticker.name}" class="sticker-img">
-                <div class="sticker-info">
-                    <span class="sticker-category">${sticker.category}</span>
-                    <h3>${sticker.name}</h3>
-                    <div class="sticker-price">$${sticker.price.toFixed(2)}</div>
-                </div>
-            `;
-            stickerGrid.appendChild(card);
+            filteredStickers.forEach(sticker => {
+                const card = document.createElement('div');
+                card.className = 'sticker-card';
+                card.innerHTML = `
+                    <img src="${sticker.image}" alt="${sticker.name}" class="sticker-img">
+                    <div class="sticker-info">
+                        <span class="sticker-category">${sticker.category}</span>
+                        <h3>${sticker.name}</h3>
+                        <div class="sticker-price">$${sticker.price.toFixed(2)}</div>
+                    </div>
+                `;
+                stickerGrid.appendChild(card);
+            });
+        }
+
+        // Filter Click Events
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active to clicked
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                renderStickers(filterValue);
+            });
         });
+
+        // Initial Render
+        renderStickers();
     }
-
-    // Filter Click Events
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active to clicked
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-            renderStickers(filterValue);
-        });
-    });
-
-    // Initial Render
-    renderStickers();
 
     // Creator Tool Logic
     const previewCanvas = document.querySelector('.preview-canvas');
-    const toolBtns = document.querySelectorAll('.tool-btn');
-    const creatorInput = document.getElementById('creatorText');
-    const colorBtns = document.querySelectorAll('.color-btn');
+    if (previewCanvas) {
+        const toolBtns = document.querySelectorAll('.tool-btn');
+        const creatorInput = document.getElementById('creatorText');
+        const colorBtns = document.querySelectorAll('.color-btn');
 
-    let currentBase = 'Llama';
-    let currentAccessory = null;
-    let currentText = '';
-    let currentColor = '#1A1A1A';
+        let currentBase = 'Llama';
+        let currentAccessory = null;
+        let currentText = '';
+        let currentColor = '#1A1A1A';
 
-    const assets = {
-        'Llama': '🦙',
-        'Cóndor': '🦅',
-        'Cuy': '🐹',
-        'Sombrero': '👒',
-        'Poncho': '👕',
-        'Gafas': '🕶️'
-    };
+        const assets = {
+            'Llama': '🦙',
+            'Cóndor': '🦅',
+            'Cuy': '🐹',
+            'Sombrero': '👒',
+            'Poncho': '👕',
+            'Gafas': '🕶️'
+        };
 
-    function updatePreview() {
-        const baseEmoji = assets[currentBase] || '';
-        const accEmoji = assets[currentAccessory] || '';
+        function updatePreview() {
+            const baseEmoji = assets[currentBase] || '';
+            const accEmoji = assets[currentAccessory] || '';
 
-        previewCanvas.innerHTML = `
-            <div class="preview-base">${baseEmoji}</div>
-            ${currentAccessory ? `<div class="preview-accessory">${accEmoji}</div>` : ''}
-            ${currentText ? `<div class="preview-text" style="color: ${currentColor}">${currentText}</div>` : ''}
-        `;
-    }
+            previewCanvas.innerHTML = `
+                <div class="preview-base">${baseEmoji}</div>
+                ${currentAccessory ? `<div class="preview-accessory">${accEmoji}</div>` : ''}
+                ${currentText ? `<div class="preview-text" style="color: ${currentColor}">${currentText}</div>` : ''}
+            `;
+        }
 
-    toolBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const parent = e.target.closest('.tool-group');
-            const type = parent.querySelector('label').textContent;
+        toolBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parent = e.target.closest('.tool-group');
+                const type = parent.querySelector('label').textContent;
 
-            if (type === 'Personalizar') return; // Skip if it's the custom group (handled separately if needed)
+                if (type === 'Personalizar') return; // Skip if it's the custom group (handled separately if needed)
 
-            // UI Update
-            parent.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
+                // UI Update
+                parent.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
 
-            // State Update
-            if (type === 'Base') {
-                currentBase = e.target.textContent;
-            } else if (type === 'Accesorio') {
-                currentAccessory = e.target.textContent;
-            }
+                // State Update
+                if (type === 'Base') {
+                    currentBase = e.target.textContent;
+                } else if (type === 'Accesorio') {
+                    currentAccessory = e.target.textContent;
+                }
+                updatePreview();
+            });
+        });
+
+        creatorInput.addEventListener('input', (e) => {
+            currentText = e.target.value;
             updatePreview();
         });
-    });
 
-    creatorInput.addEventListener('input', (e) => {
-        currentText = e.target.value;
+        colorBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                colorBtns.forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentColor = e.target.getAttribute('data-color');
+                updatePreview();
+            });
+        });
+
+        // Initial Preview
         updatePreview();
-    });
-
-    colorBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            colorBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentColor = e.target.getAttribute('data-color');
-            updatePreview();
-        });
-    });
-
-    // Initial Preview
-    updatePreview();
+    }
 
     // Cart Logic
     let cartItems = [];
@@ -206,16 +213,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Creator Add to Cart
-    addToCartCreatorBtn.addEventListener('click', () => {
-        // Create canvas image (mock)
-        const customItem = {
-            name: `Sticker Personalizado (${currentBase})`,
-            price: 4.00,
-            image: 'images/tortuga.png', // Fallback/Mock for now
-            category: 'custom'
-        };
-        addToCart(customItem);
-    });
+    if (addToCartCreatorBtn) {
+        addToCartCreatorBtn.addEventListener('click', () => {
+            // Create canvas image (mock)
+            const customItem = {
+                name: `Sticker Personalizado (${currentBase})`,
+                price: 4.00,
+                image: 'images/tortuga.png', // Fallback/Mock for now
+                category: 'custom'
+            };
+            addToCart(customItem);
+        });
+    }
 
     // Product Modal Logic
     const modal = document.createElement('div');
