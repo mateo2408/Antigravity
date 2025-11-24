@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión y Visión - EcuStickers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .mission-vision-section {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .mv-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mv-card h2 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+        }
+
+        .mv-card p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .mv-icon {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="logo">
+                    <span class="logo-icon">🇪🇨</span>
+                    <span class="logo-text">EcuStickers</span>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-secondary" style="margin-right: 10px;">Inicio</a>
+                <button class="lang-toggle" aria-label="Cambiar idioma">ES</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" style="padding: var(--spacing-lg) 0; margin-bottom: 0;">
+        <div class="container hero-content">
+            <h1>Nuestra <span class="highlight">Esencia</span></h1>
+            <p>Conoce lo que nos impulsa a llevar un pedacito de Ecuador al mundo.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="mission-vision-section">
+            <div class="container">
+                <div class="mv-card">
+                    <i data-lucide="target" class="mv-icon" style="width: 48px; height: 48px;"></i>
+                    <h2>Misión</h2>
+                    <p>Promover y preservar la riqueza cultural y natural del Ecuador a través de stickers únicos y
+                        personalizables, ofreciendo productos de alta calidad que permitan a nuestros clientes expresar
+                        su identidad con orgullo y sostenibilidad.</p>
+                </div>
+
+                <div class="mv-card">
+                    <i data-lucide="telescope" class="mv-icon" style="width: 48px; height: 48px;"></i>
+                    <h2>Visión</h2>
+                    <p>Ser la marca líder de stickers en Ecuador y el mundo, reconocida por nuestra creatividad,
+                        compromiso con el medio ambiente y por ser un puente que conecta a las personas con la esencia
+                        ecuatoriana.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EcuStickers</h3>
+                    <p>Sostenibilidad y cultura en cada impresión.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="payment-methods">
+                        <span>Pagos seguros con:</span>
+                        <div class="payment-icons">
+                            <span class="pay-icon">Visa</span>
+                            <span class="pay-icon">Mastercard</span>
+                        </div>
+                    </div>
+                    <div class="shipping">
+                        <span>Envíos por:</span>
+                        <span class="ship-icon">Servientrega</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcuStickers Mobile. Hecho en Ecuador 🇪🇨</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
